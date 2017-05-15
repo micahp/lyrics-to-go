@@ -1,0 +1,104 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #ffff64;
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
+element {
+    --placeholderColor: #000000;
+}
+
+.container {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.main {
+    left: 50%;
+    position: absolute;
+    top: 130px;
+    transform: translateX(-50%);
+}
+
+.main > input {
+    background-color: transparent;
+    -webkit-box-shadow:-10px -10px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    color: black;
+    font-size: 25px;
+    padding: 8px;
+    width: 100%;
+}
+
+.main > input:focus {
+    outline: none;
+}
+
+.main > h1 {
+    font-size: 560%;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.nav {
+    display: inline-block;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    right: 0%;
+    transform: translateX(-50%);
+}
+
+.nav > li {
+    color: #000000;
+    float: left;
+    padding: 15px;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    color: #5a67fa;
+}
+
+.lato {
+    font-family: 'Lato', sans-serif;
+}
+
+.result {
+    padding: 15px;
+    border-top: 2px solid black;
+}
+
+.results {
+    display: none;
+}
+
+::-webkit-input-placeholder { /* Chrome */
+    color: var(--placeholderColor);
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: var(--placeholderColor);
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: var(--placeholderColor);
+    opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+    color: var(--placeholderColor);
+    opacity: 1;
+}
