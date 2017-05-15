@@ -1,7 +1,5 @@
 var express = require('express');
-var http = require('http');
 var app = express();
-var path = require('path');
 var request = require('request');
 //
 // app.all('/', function(req, res, next) {
