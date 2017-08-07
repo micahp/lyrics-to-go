@@ -1,5 +1,6 @@
 var res;
 
+// Setup
 $(document).ready(function() {
     $('#searchBar').focus();
     $('#searchBar').on('keydown', searchBarOnEnter);
@@ -8,9 +9,10 @@ $(document).ready(function() {
     var press = $.Event('keydown');
     press.keyCode = 13;
     press.ctrlKey = false;
-    $('#searchBar').trigger(press);
+//    $('#searchBar').trigger(press);
 });
 
+// Gather necessary info to search Genius API
 function searchBarOnEnter(e) {
     if (e.keyCode === 13) { // ENTER pressed
         // Remove current results
@@ -24,10 +26,12 @@ function searchBarOnEnter(e) {
     }
 }
 
+// Query genius API, extracting useful info
 function searchGeniusLyrics(searchTerm) {
     console.log('searching for \"' + searchTerm + '\"...');
     let parameters = { search: searchTerm };
-    $.get('/search', parameters, function(response) {
+    $.ajax({ dataType: 'json', url: '/search?search='+searchTerm}, function(response) {
+        console.log('hi');
         $('.results p').html('');
         response = JSON.parse(response.body);
         res = response;
@@ -51,8 +55,8 @@ function searchGeniusLyrics(searchTerm) {
             // console.log(lyric_snippet);
             // console.log();
         }
-    }).fail(function() {
-        console.log('error');
+    }).fail(function(err) {
+        console.log('error: ' + err.message);
     });
 
 }
