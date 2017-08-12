@@ -5,7 +5,7 @@
 4) Open Terminal and copy this line into the terminal and enter this series of commands, pressing enter after each one:
  ```
  cd ~/Downloads/lyrics-to-go
-  ./bin/python2.7 -m pip install requests
+ ./bin/python2.7 -m pip install requests
  ./bin/python2.7 -m pip install rauth
  ./bin/python2.7 lyrics_to_go.py
  ```
