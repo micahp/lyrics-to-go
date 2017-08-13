@@ -11,5 +11,5 @@
  ```
 5) The last command opens ```wordFile``` in your default text editr (likely textEdit). Type each word you want process on a new line and save the file
 6) Copy this line into the terminal and press enter:
- ```./bin/python2.7 lyrics_to_go.py```
+ ```./bin/python2.7 lyrics_to_go.py wordFile```
 7) A file with the results of the program will be created in the words folder for each word in your word list file
