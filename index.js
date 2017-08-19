@@ -30,13 +30,12 @@ function searchBarOnEnter(e) {
 function searchGeniusLyrics(searchTerm) {
     console.log('searching for \"' + searchTerm + '\"...');
     let parameters = { search: searchTerm };
-    $.ajax({ dataType: 'json', url: '/search?search='+searchTerm}, function(response) {
+    $.get('/search?search='+searchTerm, function(response) {
         console.log('hi');
         $('.results p').html('');
-        response = JSON.parse(response.body);
-        res = response;
-        console.log(response);
-        var responses = response.response.sections[0]['hits'];
+        res = JSON.parse(response);
+        console.log(res)
+        var responses = res.response.sections[0]['hits'];
         console.log(responses);
         for (var response of responses) {
             var lyric_snippet = response.highlights[0].value;

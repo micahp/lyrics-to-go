@@ -8,18 +8,22 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
+let sketchy_headers = {'Authorization': 'Bearer 2OtW_klZF32VFLgUyu4Mwerg67Z0FaznQcmvSKWGs4nTaVv6fyH9aSc6elLqniWY'}
+
 app.get('/search', function(req, res) {
+    console.log('get request to /search')
     let searchTerm = req.query['search'] || '';
     console.log('SEARCH TERM IS: ' + searchTerm);
-    request({
-        url: 'https://api.genius.com/search/lyrics?q=' + searchTerm + '&access_token=P9RU-wDrwHTeg5qsi6uiyXMSe64z6zVgYjcWqK697VMrOTRfzsPQYXE0HiFCjEsH'
-    }, function(error, response, body) {
+    let options = {
+        url: 'https://api.genius.com/search/lyrics?q=' + searchTerm,
+        headers: sketchy_headers
+    }
+    request(options, function(error, response, body) {
         console.log('got response');
         if (error) {
             console.log("Error: " + error);
         }
-        //console.log('Response: ' + stringify(response));
-        res.send(stringify(response));
+        res.send(body);
         console.log('SENT RESPONSE')
     });
 });
