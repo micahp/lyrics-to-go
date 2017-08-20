@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/micahp/lyrics-to-go.git"
   },
+  "scripts": {
+    "start": "forever app.js"
+  },
   "author": "micahp",
   "license": "ISC",
   "bugs": {
@@ -15,6 +18,7 @@
   "homepage": "https://github.com/micahp/lyrics-to-go#readme",
   "dependencies": {
     "express": "^4.15.2",
+    "forever": "^0.15.3",
     "json-stringify-safe": "^5.0.1",
     "request": "^1.9.9"
   }

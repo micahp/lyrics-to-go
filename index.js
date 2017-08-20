@@ -50,7 +50,6 @@ function searchBigHugeThesaurus(term) {
         $synonyms.html('<h2>Thesaurus</h2>')
         // console.log(response)
         if (!response || Object.keys(response).length === 0) {
-            console.log('in not response')
             $synonyms.append(createElementString('span', 'No results to display.'))
         } else {
             for (let partOfSpeech in response) {
@@ -67,6 +66,8 @@ function searchBigHugeThesaurus(term) {
         }
     }).fail(function(err) {
         console.log('error: ' + err.message);
+        $synonyms.html('<h2>Thesaurus</h2>')
+        $('#thesaurus').append(createElementString('span', 'No results to display.'))
     })
 }
 
@@ -75,11 +76,17 @@ function searchOED(term) {
     // console.log('searching OED for ' + term)
     $.get('/definitions?term='+term, function(response) {
         // console.log(response)
-        let definition = response.results[0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'][0]
-        // console.log('Definition: ', definition)
-        $('#definition').html('<h2>Definition</h2><p>' + definition + '</p>')
+        if (!response || Object.keys(response).length === 0) {
+            $('#definition').append(createElementString('span', 'No results to display.'))
+        } else {
+            let definition = response.results[0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'][0]
+            // console.log('Definition: ', definition)
+            $('#definition').html('<h2>Definition</h2><p>' + definition + '</p>')
+        }
     }).fail(function(err) {
         console.log('error: ' + err.message);
+        $('#definition').html('<h2>Definition</h2>')
+        $('#definition').append(createElementString('span', 'No results to display.'))
     })
 }
 
@@ -91,27 +98,33 @@ function searchGeniusLyrics(searchTerm) {
     $.get('/search?search='+searchTerm, function(response) {
         $('.lyrics p').html('');
         // console.log(response)
-        var responses = response.response.sections[0]['hits'];
-        // console.log(responses);
-        for (var response of responses) {
-            var lyric_snippet = response.highlights[0].value;
-            var song_title_artist = response.result.full_title;
-            var url = response.result.url;
+        if (!response || Object.keys(response).length === 0) {
+            $('#genius').append(createElementString('span', 'No results to display.'))
+        } else {
+            var responses = response.response.sections[0]['hits'];
+            // console.log(responses);
+            for (var response of responses) {
+                var lyric_snippet = response.highlights[0].value;
+                var song_title_artist = response.result.full_title;
+                var url = response.result.url;
 
-            var result = document.createElement('div');
-            result.className = "result";
-            var innerHTML = ('<a href=' + url + ' target="__blank">' + song_title_artist + '</a>' +
-                '<br/><br/>' + lyric_snippet);
-            result.innerHTML = innerHTML;
-            $('#genius').append(result);
+                var result = document.createElement('div');
+                result.className = "result";
+                var innerHTML = ('<a href=' + url + ' target="__blank">' + song_title_artist + '</a>' +
+                    '<br/><br/>' + lyric_snippet);
+                result.innerHTML = innerHTML;
+                $('#genius').append(result);
 
-            // console.log(response);
-            // console.log(song_title_artist + ':');
-            // console.log(lyric_snippet);
-            // console.log();
+                // console.log(response);
+                // console.log(song_title_artist + ':');
+                // console.log(lyric_snippet);
+                // console.log();
+            }
         }
     }).fail(function(err) {
         console.log('error: ' + err.message);
+
+        $('#genius').append(createElementString('span', 'No results to display.'))
     });
 
 }
