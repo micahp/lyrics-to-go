@@ -68,7 +68,7 @@ element {
 
 a {
     text-decoration: none;
-    color: #000000;
+    color: #5a67fa;
 }
 
 a:hover {
@@ -81,11 +81,21 @@ a:hover {
 
 .result {
     padding: 15px;
-    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
-.results {
+.lyrics {
     display: none;
+}
+
+.thesaurus h3 {
+    margin-left: 10px;
+}
+.thesaurus h4 {
+    margin-left: 20px;
+}
+.thesaurus p {
+    margin-left: 30px;
 }
 
 ::-webkit-input-placeholder { /* Chrome */

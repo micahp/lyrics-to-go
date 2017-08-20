@@ -25,5 +25,5 @@ def get_definition(search_term):
 
 
 if __name__ == '__main__':
-	word = 'abduct'
+	word = sys.argv[1] if len(sys.argv) > 1 else 'ludicrous'
 	get_definition(word)
